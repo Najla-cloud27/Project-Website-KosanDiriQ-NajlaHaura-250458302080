@@ -80,6 +80,30 @@
         </div>
     </div>
 
+    <!-- Revenue Chart -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header border-0">
+                    <h3 class="card-title">
+                        <i class="fas fa-chart-bar mr-1"></i>
+                        Grafik Pendapatan
+                    </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="revenueChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Info Cards -->
     <div class="row">
         <div class="col-lg-6">
@@ -300,3 +324,77 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Revenue Chart Data
+        var revenueData = @json($revenueChart);
+        
+        // Prepare labels and data for all 12 months
+        var labels = [];
+        var data = [];
+        var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+        
+        revenueData.forEach(function(item) {
+            // Format month (e.g., "2025-01" to "Jan")
+            var dateParts = item.month.split('-');
+            var monthLabel = monthNames[parseInt(dateParts[1]) - 1];
+            
+            labels.push(monthLabel);
+            data.push(item.total);
+        });
+        
+        // 4. Buat chart
+        var ctx = document.getElementById('revenueChart').getContext('2d');
+        var revenueChart = new Chart(ctx, {
+            type: 'bar',  // Tipe grafik: bar (batang)
+            data: {
+                labels: labels,  // Label bulan
+                datasets: [{
+                    label: 'Pendapatan (Rp)',
+                    data: data,  // Data pendapatan
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',  // Warna biru transparan
+                    borderColor: 'rgba(54, 162, 235, 1)',  // Warna border biru
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                // Format tooltip: "Pendapatan (Rp): Rp 5.000.000"
+                                var label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += 'Rp ' + context.parsed.y.toLocaleString('id-ID');
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                // Format Y-axis: "Rp 5.000.000"
+                                return 'Rp ' + value.toLocaleString('id-ID');
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+@endpush

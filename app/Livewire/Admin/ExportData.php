@@ -9,10 +9,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExportData extends Component
 {
+    // properti
     public $dateFrom;
     public $dateTo;
     public $billStatus;
 
+    // export bilss
     public function exportBills()
     {
         $fileName = 'laporan-pembayaran-' . date('Y-m-d-His') . '.xlsx';
@@ -23,6 +25,7 @@ class ExportData extends Component
         );
     }
 
+    // export rooms
     public function exportRooms()
     {
         $fileName = 'data-kamar-' . date('Y-m-d-His') . '.xlsx';

@@ -13,7 +13,7 @@
     <!-- Action & Filter -->
     <div class="row mb-3">
         <div class="col-md-2">
-            <button wire:click="$set('showModal', true)" class="btn btn-primary btn-block">
+            <button wire:click="$set('showDetailModal', true)" class="btn btn-primary btn-block">
                 <i class="fas fa-plus"></i> Buat Tagihan
             </button>
         </div>
@@ -97,13 +97,13 @@
     </div>
 
     <!-- Modal Create Bill -->
-    @if($showModal ?? false)
+    @if($showDetailModal ?? false)
     <div class="modal fade show" style="display: block; background: rgba(0,0,0,0.5);">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Buat Tagihan Baru</h4>
-                    <button type="button" wire:click="$set('showModal', false)" class="close"><span>×</span></button>
+                    <button type="button" wire:click="$set('showDetailModal', false)" class="close"><span>×</span></button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -138,7 +138,7 @@
                     </form>
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" wire:click="$set('showModal', false)" class="btn btn-default">Batal</button>
+                    <button type="button" wire:click="$set('showDetailModal', false)" class="btn btn-default">Batal</button>
                     <button type="button" wire:click="createBill" class="btn btn-primary">
                         <i class="fas fa-save"></i> Simpan
                     </button>

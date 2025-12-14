@@ -12,17 +12,25 @@ class UserManagement extends Component
 {
     use WithPagination;
 
+    // properti
+    // public showmodal untuk mengatur modal
+    // public $name , email, password pasword confirmation, role ini untuk menyimpan input form user
+    // public phone numbe, nik untuk menyimpan data tambahan user
+    // public search untuk fitur pencarian user
+    // public edit mode false = false = tambah user, true-=edit user
     public $showModal = false;
     public $name, $email, $password, $password_confirmation, $role = 'penyewa';
     public $phone_number, $nik;
     public $search = '';
     public $editMode = false;
+    // menyimpan id user yang sedang di edit 
     public $userId;
 
     protected $paginationTheme = 'bootstrap';
 
     protected function rules()
     {
+        // memvalidasi data
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $this->userId,
@@ -42,18 +50,22 @@ class UserManagement extends Component
         return $rules;
     }
 
+    // untuk tampilkan modal
     public function openModal()
     {
         $this->resetForm();
         $this->showModal = true;
     }
 
+    // untuk tutup modal
     public function closeModal()
     {
         $this->showModal = false;
         $this->resetForm();
     }
 
+    // mengsongkan semua input
+    // mengembalikan ke mode tambah
     public function resetForm()
     {
         $this->name = '';
@@ -68,10 +80,12 @@ class UserManagement extends Component
         $this->resetErrorBag();
     }
 
+    // inti utama nya 
     public function save()
     {
         $this->validate();
 
+        // simpan data
         $data = [
             'name' => $this->name,
             'email' => $this->email,
@@ -80,6 +94,9 @@ class UserManagement extends Component
             'role' => $this->role,
         ];
 
+        // jika edit user
+        // ambil user lama
+        // update data
         if ($this->editMode) {
             $user = User::find($this->userId);
             
@@ -89,6 +106,9 @@ class UserManagement extends Component
             
             $user->update($data);
             session()->flash('message', 'Pengguna berhasil diupdate.');
+            // password wajib
+            // password di hash
+            // simpan user baru
         } else {
             $data['password'] = Hash::make($this->password);
             User::create($data);
@@ -98,6 +118,7 @@ class UserManagement extends Component
         $this->closeModal();
     }
 
+    // dipanggil sata klik tombol edit
     public function edit($id)
     {
         $user = User::findOrFail($id);

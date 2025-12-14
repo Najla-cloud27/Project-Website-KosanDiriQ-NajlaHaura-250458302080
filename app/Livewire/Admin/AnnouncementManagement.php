@@ -26,6 +26,7 @@ class AnnouncementManagement extends Component
         'publish_status' => 'required|in:draf,diterbitkan',
     ];
 
+    // method untuk create
     public function createAnnouncement()
     {
         $this->validate();
@@ -47,6 +48,7 @@ class AnnouncementManagement extends Component
         $this->reset(['title', 'content', 'image', 'publish_status']);
     }
 
+    // method edit
     public function editAnnouncement($id)
     {
         $announcement = Announcoments::findOrFail($id);
@@ -56,15 +58,18 @@ class AnnouncementManagement extends Component
         $this->publish_status = $announcement->publish_status;
         $this->image = null;
         
+        // agar halaman otmatis scrol ke form edit
         $this->dispatch('scrollToForm');
     }
 
+    // method cancel
     public function cancelEdit()
     {
         $this->reset(['title', 'content', 'image', 'publish_status', 'editingId']);
         $this->resetValidation();
     }
     
+    // method untuk update
     public function updateAnnouncement()
     {
         $this->validate();
@@ -92,6 +97,7 @@ class AnnouncementManagement extends Component
         $this->resetValidation();
     }
 
+    // untuk delete
     public function deleteAnnouncement($id)
     {
         Announcoments::findOrFail($id)->delete();

@@ -15,7 +15,9 @@ class RoomManagement extends Component
 
     public $showModal = false;
     public $name, $description, $price, $size, $status = 'tersedia', $fasilitas, $stok = 1;
+    // untuk gambar baru
     public $image;
+    // untuk menyimpan gambar yang sudah ada lalu di edit
     public $currentImage;
     public $search = '';
     public $editMode = false;
@@ -23,6 +25,7 @@ class RoomManagement extends Component
 
     protected $paginationTheme = 'bootstrap';
 
+    // validasi
     protected $rules = [
         'name' => 'required|string|max:255',
         'description' => 'nullable|string',
@@ -34,6 +37,7 @@ class RoomManagement extends Component
         'image' => 'nullable|image|max:2048',
     ];
 
+    // open modal
     public function openModal()
     {
         $this->resetForm();
@@ -41,6 +45,7 @@ class RoomManagement extends Component
         $this->dispatch('modal-opened');
     }
 
+    // close modal
     public function closeModal()
     {
         $this->dispatch('modal-closed');
@@ -48,6 +53,7 @@ class RoomManagement extends Component
         $this->resetForm();
     }
 
+    // reset form
     public function resetForm()
     {
         $this->name = '';
@@ -64,6 +70,7 @@ class RoomManagement extends Component
         $this->resetErrorBag();
     }
 
+    // untuk save data
     public function save()
     {
         $this->validate();
@@ -121,6 +128,7 @@ class RoomManagement extends Component
         $this->dispatch('modal-opened');
     }
 
+    // untuk menghapus image
     public function deleteImage()
     {
         if ($this->editMode && $this->roomId) {
@@ -128,11 +136,13 @@ class RoomManagement extends Component
             
             if ($room->main_image_url) {
                 // Delete file from storage
+                // menghapus gambar dri storage
                 if (Storage::disk('public')->exists($room->main_image_url)) {
                     Storage::disk('public')->delete($room->main_image_url);
                 }
                 
                 // Update database
+                // menghapus gambar dari database
                 $room->update(['main_image_url' => null]);
                 $this->currentImage = null;
                 
@@ -141,6 +151,7 @@ class RoomManagement extends Component
         }
     }
 
+    // untuk menghapus data
     public function delete($id)
     {
         $room = Rooms::find($id);

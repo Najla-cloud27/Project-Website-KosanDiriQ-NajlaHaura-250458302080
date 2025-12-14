@@ -12,6 +12,7 @@ class BookingManagement extends Component
 {
     use WithPagination;
 
+    // properti uatama
     public $showModal = false;
     public $showDetailModal = false;
     public $search = '';
@@ -25,6 +26,7 @@ class BookingManagement extends Component
 
     protected $paginationTheme = 'bootstrap';
 
+    // protected rules
     protected $rules = [
         'user_id' => 'required|exists:users,id',
         'room_id' => 'required|exists:rooms,id',
@@ -33,18 +35,21 @@ class BookingManagement extends Component
         'notes' => 'nullable|string',
     ];
 
+    // untuk openmodal
     public function openModal()
     {
         $this->resetForm();
         $this->showModal = true;
     }
 
+    // close modal
     public function closeModal()
     {
         $this->showModal = false;
         $this->resetForm();
     }
 
+    // reset form
     public function resetForm()
     {
         $this->user_id = '';
@@ -158,6 +163,7 @@ class BookingManagement extends Component
         session()->flash('message', 'Status booking berhasil diupdate.');
     }
 
+    // public function delete
     public function delete($id)
     {
         Bookings::find($id)->delete();

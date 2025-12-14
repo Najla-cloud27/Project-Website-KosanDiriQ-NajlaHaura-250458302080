@@ -22,6 +22,7 @@ class BillManagement extends Component
     public $due_date;
     public $description;
 
+    // pagination
     protected $paginationTheme = 'bootstrap';
 
     protected $rules = [
@@ -31,6 +32,7 @@ class BillManagement extends Component
         'description' => 'nullable|string',
     ];
 
+    // function create
     public function createBill()
     {
         $this->validate();
@@ -54,6 +56,7 @@ class BillManagement extends Component
     public $showDetailModal = false;
     public $selectedBill;
 
+    // view detail
     public function viewDetail($id)
     {
         $this->selectedBill = Bills::with(['user', 'booking'])->findOrFail($id);

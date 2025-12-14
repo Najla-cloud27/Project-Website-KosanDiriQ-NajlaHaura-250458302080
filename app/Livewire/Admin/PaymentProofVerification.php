@@ -62,6 +62,7 @@ class PaymentProofVerification extends Component
             'verified_at' => now(),
         ]);
 
+        // update tagihan 
         $this->selectedProof->bill->update([
             'status' => 'belum_dibayar',
         ]);
