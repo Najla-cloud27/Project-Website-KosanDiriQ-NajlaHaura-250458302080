@@ -69,12 +69,15 @@ class BillManagement extends Component
         $this->selectedBill = null;
     }
 
+    // untuk menghapus
     public function delete($id)
     {
         Bills::find($id)->delete();
         session()->flash('message', 'Tagihan berhasil dihapus.');
     }
 
+    // public function render 
+    // membangun dan menampilkan data bills dengan filter pencarian dan status
     public function render()
     {
         $bills = Bills::when($this->search, function ($query) {

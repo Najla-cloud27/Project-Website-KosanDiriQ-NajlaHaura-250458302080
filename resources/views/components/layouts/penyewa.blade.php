@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ $title ?? 'Dashboard Penyewa - KosanKu' }}</title>
+  <title>{{ $title ?? 'Dashboard Penyewa - KosanDiriQ' }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -85,7 +85,7 @@
     <!-- Brand Logo -->
     <a href="{{ route('penyewa.dashboard') }}" class="brand-link text-center">
       <i class="fas fa-user-circle mr-2"></i>
-      <span class="brand-text font-weight-light">KosanKu - Penyewa</span>
+      <span class="brand-text font-weight-light">KosanDiriQ - Penyewa</span>
     </a>
 
     <!-- Sidebar -->
@@ -259,7 +259,7 @@
   
   <!-- Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; {{ date('Y') }} <a href="{{ route('home') }}">KosanKu</a>.</strong>
+    <strong>Copyright &copy; {{ date('Y') }} <a href="{{ route('home') }}">KosanDiriQ</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0

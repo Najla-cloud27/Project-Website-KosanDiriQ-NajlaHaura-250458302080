@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar - KosanKu</title>
+    <title>Daftar - KosanDiriQ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -107,7 +107,7 @@
         <!-- Left Side - Branding -->
         <div class="register-left">
             <div>
-                <h1 class="fw-bold mb-4"><i class="fas fa-home me-2"></i>KosanKu</h1>
+                <h1 class="fw-bold mb-4"><i class="fas fa-home me-2"></i>KosanDiriQ</h1>
                 <h3 class="mb-4">Bergabunglah dengan Kami!</h3>
                 <p class="lead">Daftar sekarang dan nikmati kemudahan mengelola kosan dengan sistem modern.</p>
                 <ul class="mt-4 list-unstyled">

@@ -191,6 +191,7 @@ class BookingManagement extends Component
         $users = User::where('role', 'penyewa')->get();
         
         // Get available rooms + current room if editing
+        // gett current
         $rooms = Rooms::where('status', 'tersedia')
             ->when($this->editMode && $this->room_id, function($query) {
                 $query->orWhere('id', $this->room_id);

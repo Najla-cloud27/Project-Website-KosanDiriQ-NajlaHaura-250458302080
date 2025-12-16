@@ -19,6 +19,7 @@ class AnnouncementManagement extends Component
 
     protected $paginationTheme = 'bootstrap';
 
+    // validasi data
     protected $rules = [
         'title' => 'required|string|max:255',
         'content' => 'required|string',

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lupa Password - KosanKu</title>
+    <title>Lupa Password - KosanDiriQ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -88,6 +88,8 @@
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Oops!</strong> Ada masalah:
                 <ul class="mb-0 mt-2">
+                    {{-- pakai foreach untuk menumpulkan server error
+                    terus ditampilkan satu satu dalam list --}}
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -96,7 +98,9 @@
             </div>
         @endif
 
+        {{-- form method untuk mengirimkan data ke server --}}
         <form method="POST" action="{{ route('password.email') }}">
+            {{-- pengaman kalo ini website nya --}}
             @csrf
 
             <div class="mb-4">

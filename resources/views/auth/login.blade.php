@@ -104,7 +104,7 @@
         <!-- Left Side - Branding -->
         <div class="login-left">
             <div>
-                <h1 class="fw-bold mb-4"><i class="fas fa-home me-2"></i>KosanKu</h1>
+                <h1 class="fw-bold mb-4"><i class="fas fa-home me-2"></i>KosanDiriQ</h1>
                 <h3 class="mb-4">Selamat Datang Kembali!</h3>
                 <p class="lead">Kelola kosan Anda dengan mudah. Masuk untuk mengakses dashboard dan semua fitur.</p>
                 <ul class="mt-4 list-unstyled">

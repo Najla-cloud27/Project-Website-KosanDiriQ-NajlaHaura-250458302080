@@ -52,6 +52,7 @@ class ComplaintManagement extends Component
         $this->dispatch('close-modal');
     }
 
+    // close modal
     public function closeModal()
     {
         $this->reset(['selectedComplaint', 'newStatus']);

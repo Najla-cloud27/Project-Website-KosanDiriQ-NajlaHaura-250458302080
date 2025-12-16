@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ $title ?? 'Dashboard Admin - KosanKu' }}</title>
+  <title>{{ $title ?? 'Dashboard Admin - KosanDiriQ' }}</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -266,7 +266,7 @@
   
   <!-- Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; {{ date('Y') }} <a href="{{ route('home') }}">KosanKu</a>.</strong>
+    <strong>Copyright &copy; {{ date('Y') }} <a href="{{ route('home') }}">KosaDiriQ</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0
